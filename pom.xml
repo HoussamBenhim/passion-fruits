@@ -21,10 +21,23 @@
 		<module>passion-fruits-data</module>
 		<module>passion-fruits-web</module>
 	</modules>
-	<dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<goals>install</goals>
+					<!-- configure to prevent deploy to maven central  -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-	</dependencies>
-
+	<scm>
+		<developerConnection>scm:git://github.com/HoussamBenhim/passion-fruits.git</developerConnection>
+	</scm>
 
 	
 </project>
