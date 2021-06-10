@@ -1,3 +1,4 @@
+
 package com.springframework.passionfruits;
 
 import org.springframework.boot.SpringApplication;
