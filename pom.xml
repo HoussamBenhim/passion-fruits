@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.springframework</groupId>
 	<artifactId>passion-fruits</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>passion-fruits</name>
 	<description>Passion Fruits Backend Project</description>
@@ -29,14 +29,14 @@
 				<configuration>
 					<goals>install</goals>
 					<!-- configure to prevent deploy to maven central  -->
+					<autoVersionSubmodules>true</autoVersionSubmodules>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
 	<scm>
-		<developerConnection>scm:git://github.com/HoussamBenhim/passion-fruits.git</developerConnection>
-	  <tag>passion-fruits-0.0.1</tag>
+		<developerConnection>scm:git:git@github.com:HoussamBenhim/passion-fruits.git</developerConnection>
   </scm>
 
 	
