@@ -1,5 +1,9 @@
 package com.springframework.passionfruits.services;
 
-public interface ProductService {
+import java.util.Set;
 
+import com.springframework.passionfruits.moddels.Product;
+
+public interface ProductService extends CrudService<ProductService, Long> {
+	Product findByName(String name);
 }

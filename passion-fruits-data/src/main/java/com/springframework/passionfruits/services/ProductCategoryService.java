@@ -4,9 +4,6 @@ import java.util.Set;
 
 import com.springframework.passionfruits.moddels.ProductCategory;
 
-public interface ProductCategoryService {
+public interface ProductCategoryService extends CrudService<ProductCategory, Long> {
 	ProductCategory findByName(String name);
-	ProductCategory findById(Long id);
-	ProductCategory save(ProductCategory product);
-	Set<ProductCategory> findAll();
 }

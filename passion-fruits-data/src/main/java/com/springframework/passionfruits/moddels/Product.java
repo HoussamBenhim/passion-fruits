@@ -1,8 +1,8 @@
 package com.springframework.passionfruits.moddels;
 
-public class Product {
+public class Product extends BaseEntity{
 
-	private Long id;
+	
 	private String name;
 	private Long price;
 	private String origin;
@@ -27,12 +27,7 @@ public class Product {
 	public void setSubCategory(ProductSubCategory subCategory) {
 		this.subCategory = subCategory;
 	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+
 	public String getName() {
 		return name;
 	}
