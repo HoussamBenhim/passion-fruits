@@ -4,8 +4,9 @@ import java.util.Set;
 
 import com.springframework.passionfruits.moddels.ProductCategory;
 import com.springframework.passionfruits.services.CrudService;
+import com.springframework.passionfruits.services.ProductCategoryService;
 
-public class ProductCategoryMapService extends AbstractMapService<ProductCategory, Long> implements CrudService<ProductCategory, Long> {
+public class ProductCategoryMapService extends AbstractMapService<ProductCategory, Long> implements ProductCategoryService {
 
 	@Override
 	public ProductCategory save(ProductCategory entity) {
@@ -28,6 +29,12 @@ public class ProductCategoryMapService extends AbstractMapService<ProductCategor
 	@Override
 	public ProductCategory findById(Long id) {
 		return super.findById(id);
+	}
+
+	@Override
+	public ProductCategory findByName(String name) {
+		
+		return null;
 	}
 
 }

@@ -4,7 +4,7 @@ public class Product extends BaseEntity{
 
 	
 	private String name;
-	private Long price;
+	private Double price;
 	private String origin;
 	private String descrption;
 	private Integer valeur_nutritionnelle;
@@ -12,7 +12,7 @@ public class Product extends BaseEntity{
 	private String culture;
 	private String image_url;
 	private ProductCategory productCategory;
-	private ProductSubCategory subCategory;
+	
 	
 	
 	public ProductCategory getProductCategory() {
@@ -21,12 +21,7 @@ public class Product extends BaseEntity{
 	public void setProductCategory(ProductCategory productCategory) {
 		this.productCategory = productCategory;
 	}
-	public ProductSubCategory getSubCategory() {
-		return subCategory;
-	}
-	public void setSubCategory(ProductSubCategory subCategory) {
-		this.subCategory = subCategory;
-	}
+	
 
 	public String getName() {
 		return name;
@@ -34,10 +29,10 @@ public class Product extends BaseEntity{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Long getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(Long price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 	public String getOrigin() {

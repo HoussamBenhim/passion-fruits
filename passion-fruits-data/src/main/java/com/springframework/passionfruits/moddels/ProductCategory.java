@@ -4,6 +4,7 @@ public class ProductCategory extends BaseEntity {
  
 	private String categoryName;
 	private String categoryDescription;
+	private ProductSubCategory productSubCategory; 
 
 	public String getCategoryName() {
 		return categoryName;
@@ -16,6 +17,12 @@ public class ProductCategory extends BaseEntity {
 	}
 	public void setCategoryDescription(String categoryDescription) {
 		this.categoryDescription = categoryDescription;
+	}
+	public ProductSubCategory getProductSubCategory() {
+		return productSubCategory;
+	}
+	public void setProductSubCategory(ProductSubCategory productSubCategory) {
+		this.productSubCategory = productSubCategory;
 	}
 	
 }
