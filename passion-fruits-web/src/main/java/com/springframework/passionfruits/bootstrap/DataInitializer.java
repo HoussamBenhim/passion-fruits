@@ -32,11 +32,9 @@ public class DataInitializer implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		ProductSubCategory productSubCategory1  = new ProductSubCategory();
-		productSubCategory1.setId(1l);
 		productSubCategory1.setSubCtergoryName("Fruits rouges");
 		productSubCategoryMapService.save(productSubCategory1);
 		ProductSubCategory productSubCategory2  = new ProductSubCategory();
-		productSubCategory2.setId(2l);
 		productSubCategory2.setSubCtergoryName("Fruits à noyeau");
 		productSubCategoryMapService.save(productSubCategory2);
 		
@@ -45,7 +43,6 @@ public class DataInitializer implements CommandLineRunner{
 		ProductCategory productCategory1 = new ProductCategory();
 		productCategory1.setCategoryName("Fruits");
 		productCategory1.setCategoryDescription("Fruits avec un noyeau");
-		productCategory1.setId(1L);
 		productCategory1.setProductSubCategory(productSubCategory1);
 		
 		productCategoryMapService.save(productCategory1);
@@ -53,7 +50,6 @@ public class DataInitializer implements CommandLineRunner{
 		ProductCategory productCategory2 = new ProductCategory();
 		productCategory2.setCategoryName("Fruits");
 		productCategory2.setCategoryDescription("Fruits rouges");
-		productCategory2.setId(2L);
 		productCategory2.setProductSubCategory(productSubCategory2);
 		productCategoryMapService.save(productCategory2);
 		
@@ -63,7 +59,6 @@ public class DataInitializer implements CommandLineRunner{
 		
 		
 		Product product1 = new Product();
-		product1.setId(1L);
 		product1.setName("Barquette Mirabelle - 350g");
 		product1.setConservation("Ce produit se conserve au réfrigérateur. Voir date limite de conservation sur l’emballage.");
 		product1.setCulture("Agriculture raisonnée");
@@ -77,7 +72,6 @@ public class DataInitializer implements CommandLineRunner{
 		productMapService.save(product1);
 		
 		Product product2 = new Product();
-		product2.setId(2L);
 		product2.setName("Barquette de cerise - Gard");
 		product2.setConservation("Ce produit se conserve au réfrigérateur. Voir date limite de conservation sur l’emballage.");
 		product2.setCulture("Agriculture raisonnée");

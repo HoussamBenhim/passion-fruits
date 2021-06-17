@@ -12,7 +12,7 @@ public class ProductCategoryMapService extends AbstractMapService<ProductCategor
 
 	@Override
 	public ProductCategory save(ProductCategory entity) {
-		return super.save(entity.getId(), entity);
+		return super.save(entity);
 	};
 
 	@Override

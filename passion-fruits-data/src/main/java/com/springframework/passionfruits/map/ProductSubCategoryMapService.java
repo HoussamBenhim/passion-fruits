@@ -11,7 +11,7 @@ import com.springframework.passionfruits.services.ProductSubCategoryService;
 public class ProductSubCategoryMapService extends AbstractMapService<ProductSubCategory, Long> implements ProductSubCategoryService{
 	@Override
 	public ProductSubCategory save(ProductSubCategory entity) {
-		return super.save(entity.getId(), entity);
+		return super.save( entity);
 	};
 
 	@Override

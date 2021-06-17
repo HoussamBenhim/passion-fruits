@@ -19,7 +19,7 @@ public class ProductMapService extends AbstractMapService<Product, Long> impleme
 
 	@Override
 	public Product save(Product entity) {
-		return super.save(entity.getId(), entity);
+		return super.save( entity);
 	}
 
 	@Override
