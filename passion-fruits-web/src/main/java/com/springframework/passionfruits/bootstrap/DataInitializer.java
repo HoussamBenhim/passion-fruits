@@ -1,5 +1,6 @@
 package com.springframework.passionfruits.bootstrap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -16,12 +17,18 @@ public class DataInitializer implements CommandLineRunner{
 	private final ProductCategoryMapService productCategoryMapService;
 	private final ProductSubCategoryMapService productSubCategoryMapService;
 	
-	public DataInitializer() {
-		productMapService = new ProductMapService();
-		productCategoryMapService = new ProductCategoryMapService();
-		productSubCategoryMapService= new ProductSubCategoryMapService();
-	}
 	
+	@Autowired
+	public DataInitializer(ProductMapService productMapService, ProductCategoryMapService productCategoryMapService,
+			ProductSubCategoryMapService productSubCategoryMapService) {
+		
+		this.productMapService = productMapService;
+		this.productCategoryMapService = productCategoryMapService;
+		this.productSubCategoryMapService = productSubCategoryMapService;
+	}
+
+
+
 	@Override
 	public void run(String... args) throws Exception {
 		ProductSubCategory productSubCategory1  = new ProductSubCategory();
@@ -84,7 +91,7 @@ public class DataInitializer implements CommandLineRunner{
 		productMapService.save(product2);
 		
 		
-		System.out.println("Loaded Products");
+		System.out.println("Products Loaded ");
 		
 		
 		

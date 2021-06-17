@@ -2,10 +2,11 @@ package com.springframework.passionfruits.map;
 
 import java.util.Set;
 
-import com.springframework.passionfruits.moddels.Product;
-import com.springframework.passionfruits.services.CrudService;
-import com.springframework.passionfruits.services.ProductService;
+import org.springframework.stereotype.Service;
 
+import com.springframework.passionfruits.moddels.Product;
+import com.springframework.passionfruits.services.ProductService;
+@Service
 public class ProductMapService extends AbstractMapService<Product, Long> implements ProductService{
 	@Override
 	public Set<Product> findAll(){
