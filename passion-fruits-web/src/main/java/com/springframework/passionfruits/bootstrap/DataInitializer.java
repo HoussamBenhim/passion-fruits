@@ -16,7 +16,7 @@ public class DataInitializer implements CommandLineRunner{
 	private final ProductMapService productMapService;
 	private final ProductCategoryMapService productCategoryMapService;
 	private final ProductSubCategoryMapService productSubCategoryMapService;
-	
+
 	
 	@Autowired
 	public DataInitializer(ProductMapService productMapService, ProductCategoryMapService productCategoryMapService,
@@ -25,12 +25,15 @@ public class DataInitializer implements CommandLineRunner{
 		this.productMapService = productMapService;
 		this.productCategoryMapService = productCategoryMapService;
 		this.productSubCategoryMapService = productSubCategoryMapService;
+	
 	}
 
 
 
 	@Override
 	public void run(String... args) throws Exception {
+
+		
 		ProductSubCategory productSubCategory1  = new ProductSubCategory();
 		productSubCategory1.setSubCtergoryName("Fruits rouges");
 		productSubCategoryMapService.save(productSubCategory1);

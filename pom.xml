@@ -19,6 +19,7 @@
 	<modules>
 		<module>passion-fruits-data</module>
 		<module>passion-fruits-web</module>
+
 	</modules>
 	
 	<build>
