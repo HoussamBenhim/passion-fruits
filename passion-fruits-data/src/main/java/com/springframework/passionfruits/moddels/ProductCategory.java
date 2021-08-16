@@ -1,10 +1,17 @@
 package com.springframework.passionfruits.moddels;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ProductCategory extends BaseEntity {
  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String categoryName;
 	private String categoryDescription;
-	private ProductSubCategory productSubCategory; 
+	private Set<ProductSubCategory> productSubCategory = new HashSet<>(); 
 
 	public String getCategoryName() {
 		return categoryName;
@@ -18,11 +25,12 @@ public class ProductCategory extends BaseEntity {
 	public void setCategoryDescription(String categoryDescription) {
 		this.categoryDescription = categoryDescription;
 	}
-	public ProductSubCategory getProductSubCategory() {
+	public Set<ProductSubCategory> getProductSubCategory() {
 		return productSubCategory;
 	}
-	public void setProductSubCategory(ProductSubCategory productSubCategory) {
+	public void setProductSubCategory(Set<ProductSubCategory> productSubCategory) {
 		this.productSubCategory = productSubCategory;
 	}
+	
 	
 }

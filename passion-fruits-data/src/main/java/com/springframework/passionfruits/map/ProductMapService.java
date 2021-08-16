@@ -5,9 +5,21 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 
 import com.springframework.passionfruits.moddels.Product;
+import com.springframework.passionfruits.services.ProductCategoryService;
 import com.springframework.passionfruits.services.ProductService;
+import com.springframework.passionfruits.services.ProductSubCategoryService;
 @Service
 public class ProductMapService extends AbstractMapService<Product, Long> implements ProductService{
+	private final ProductSubCategoryService productSubCategoryService; 
+	private final ProductCategoryService productCategoryService;
+	
+	public ProductMapService(ProductSubCategoryService productSubCategoryService,
+			ProductCategoryService productCategoryService) {
+		super();
+		this.productSubCategoryService = productSubCategoryService;
+		this.productCategoryService = productCategoryService;
+	}
+	
 	@Override
 	public Set<Product> findAll(){
 		return super.findAll();
@@ -19,7 +31,22 @@ public class ProductMapService extends AbstractMapService<Product, Long> impleme
 
 	@Override
 	public Product save(Product entity) {
-		return super.save( entity);
+		if(entity==null) {
+			return null;
+		}
+		if(entity.getProductCategory() ==null) {
+			throw new RuntimeException("Product Category can't be null!");
+		}else {
+			if(entity.getProductCategory().getId()==null) {
+				entity.setProductCategory(productCategoryService.save(entity.getProductCategory()));
+				entity.getProductCategory().getProductSubCategory().forEach(subCat ->{
+					if(subCat.getId()==null) {
+						entity.getProductCategory().getProductSubCategory().add(productSubCategoryService.save(subCat));
+					}
+				});
+			}
+		}
+		return super.save(entity);
 	}
 
 	@Override

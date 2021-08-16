@@ -1,5 +1,6 @@
 com\springframework\passionfruits\services\ProductSubCategoryService.class
 com\springframework\passionfruits\map\ProductMapService.class
+com\springframework\passionfruits\moddels\AuthenticationRequest.class
 com\springframework\passionfruits\moddels\BaseEntity.class
 com\springframework\passionfruits\services\ProductService.class
 com\springframework\passionfruits\map\AbstractMapService.class
@@ -7,6 +8,7 @@ com\springframework\passionfruits\map\ProductSubCategoryMapService.class
 com\springframework\passionfruits\map\ProductCategoryMapService.class
 com\springframework\passionfruits\moddels\Product.class
 com\springframework\passionfruits\services\ProductCategoryService.class
+com\springframework\passionfruits\moddels\AuthenticationResponse.class
 com\springframework\passionfruits\moddels\ProductSubCategory.class
 com\springframework\passionfruits\services\CrudService.class
 com\springframework\passionfruits\moddels\User.class
