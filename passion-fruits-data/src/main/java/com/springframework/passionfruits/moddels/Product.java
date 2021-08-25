@@ -1,20 +1,46 @@
 package com.springframework.passionfruits.moddels;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "products")
 public class Product extends BaseEntity{
 
-	
+	@Column(name = "name")
 	private String name;
+	@Column(name = "price")
 	private Double price;
+	@Column(name = "origin")
 	private String origin;
+	@Column(name = "description")
 	private String descrption;
+	@Column(name = "nutrition_score")
 	private Integer valeur_nutritionnelle;
+	@Column(name = "conservation")
 	private String conservation;
+	@Column(name = "agriculture")
 	private String culture;
+	@Column(name = "picture")
 	private String image_url;
+	@ManyToOne
+	@JoinColumn(name = "product_category_id")
 	private ProductCategory productCategory;
+	@ManyToOne
+	@JoinColumn(name = "product_sub_cat_id")
+	private ProductSubCategory productSubCategory;
 	
 	
-	
+	public ProductSubCategory getProductSubCategory() {
+		return productSubCategory;
+	}
+	public void setProductSubCategory(ProductSubCategory productSubCategory) {
+		this.productSubCategory = productSubCategory;
+	}
 	public ProductCategory getProductCategory() {
 		return productCategory;
 	}

@@ -1,10 +1,24 @@
 package com.springframework.passionfruits.moddels;
 
-public class ProductSubCategory extends BaseEntity{
- 
-	private String subCtergoryName;
-	private String subCategoryDescription;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import com.springframework.passionfruits.map.ProductCategoryMapService;
+@Entity
+@Table(name = "product_sub_categories")
+public class ProductSubCategory extends BaseEntity{
+	@Column(name = "sub_category_name")
+	private String subCtergoryName;
+	@Column(name = "description")
+	private String subCategoryDescription;
+	@ManyToOne
+	@JoinColumn(name = "product_category_id")
+	private ProductCategory productCategory;
+	
+	
 	public String getSubCtergoryName() {
 		return subCtergoryName;
 	}
