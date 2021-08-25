@@ -93,7 +93,6 @@ public class DataInitializer implements CommandLineRunner{
 		product1.setImage_url("cherry-plum-5366060_640.jpg");
 		product1.setPrice(3.5);
 		product1.setProductCategory(productCategory1);
-		
 		product1.setValeur_nutritionnelle(40);
 		productService.save(product1);
 		
@@ -121,8 +120,9 @@ public class DataInitializer implements CommandLineRunner{
 		System.out.println("---------------------subCategories Loaded----------------------- ");
 		
 		product2.getProductCategory().getProductSubCategory().forEach(subCat -> {
-			System.out.println(subCat.getId());
+		System.out.println(subCat.getId());
 		});
+		System.out.println(product2.getProductCategory().getId());
 		
 	}
 
