@@ -7,6 +7,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.springframework.passionfruits.map.ProductCategoryMapService;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "product_sub_categories")
 public class ProductSubCategory extends BaseEntity{
@@ -17,21 +29,6 @@ public class ProductSubCategory extends BaseEntity{
 	@ManyToOne
 	@JoinColumn(name = "product_category_id")
 	private ProductCategory productCategory;
-	
-	
-	public String getSubCtergoryName() {
-		return subCtergoryName;
-	}
-	public void setSubCtergoryName(String subCtergoryName) {
-		this.subCtergoryName = subCtergoryName;
-	}
-	public String getSubCategoryDescription() {
-		return subCategoryDescription;
-	}
-	public void setSubCategoryDescription(String subCategoryDescription) {
-		this.subCategoryDescription = subCategoryDescription;
-	}
-	
-	
+
 	
 }

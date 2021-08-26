@@ -7,10 +7,36 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "products")
 public class Product extends BaseEntity{
-
+	
+	@Builder
+	public Product(Long id, String name, Double price, String origin, String descrption, Integer valeur_nutritionnelle,
+			String conservation, String culture, String image_url, ProductCategory productCategory,
+			ProductSubCategory productSubCategory) {
+		super(id);
+		this.name = name;
+		this.price = price;
+		this.origin = origin;
+		this.descrption = descrption;
+		this.valeur_nutritionnelle = valeur_nutritionnelle;
+		this.conservation = conservation;
+		this.culture = culture;
+		this.image_url = image_url;
+		this.productCategory = productCategory;
+		this.productSubCategory = productSubCategory;
+	}
 	@Column(name = "name")
 	private String name;
 	@Column(name = "price")
@@ -33,70 +59,5 @@ public class Product extends BaseEntity{
 	@ManyToOne
 	@JoinColumn(name = "product_sub_cat_id")
 	private ProductSubCategory productSubCategory;
-	
-	
-	public ProductSubCategory getProductSubCategory() {
-		return productSubCategory;
-	}
-	public void setProductSubCategory(ProductSubCategory productSubCategory) {
-		this.productSubCategory = productSubCategory;
-	}
-	public ProductCategory getProductCategory() {
-		return productCategory;
-	}
-	public void setProductCategory(ProductCategory productCategory) {
-		this.productCategory = productCategory;
-	}
-	
-
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public Double getPrice() {
-		return price;
-	}
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-	public String getOrigin() {
-		return origin;
-	}
-	public void setOrigin(String origin) {
-		this.origin = origin;
-	}
-	public String getDescrption() {
-		return descrption;
-	}
-	public void setDescrption(String descrption) {
-		this.descrption = descrption;
-	}
-	public Integer getValeur_nutritionnelle() {
-		return valeur_nutritionnelle;
-	}
-	public void setValeur_nutritionnelle(Integer valeur_nutritionnelle) {
-		this.valeur_nutritionnelle = valeur_nutritionnelle;
-	}
-	public String getConservation() {
-		return conservation;
-	}
-	public void setConservation(String conservation) {
-		this.conservation = conservation;
-	}
-	public String getCulture() {
-		return culture;
-	}
-	public void setCulture(String culture) {
-		this.culture = culture;
-	}
-	public String getImage_url() {
-		return image_url;
-	}
-	public void setImage_url(String image_url) {
-		this.image_url = image_url;
-	}
-	
 	
 }
