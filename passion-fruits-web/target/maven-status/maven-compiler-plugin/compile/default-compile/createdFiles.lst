@@ -1,10 +1,6 @@
-com\springframework\passionfruits\security\util\JwtUtil.class
+com\springframework\passionfruits\configForProfileTest.class
 com\springframework\passionfruits\PassionFruitsApplication.class
 com\springframework\passionfruits\controllers\ProductCategoryController.class
-com\springframework\passionfruits\security\SecurityConfigurer.class
 com\springframework\passionfruits\bootstrap\DataInitializer.class
-com\springframework\passionfruits\controllers\AuthenticateController.class
 com\springframework\passionfruits\controllers\ProductController.class
 com\springframework\passionfruits\ConfigurationClass.class
-com\springframework\passionfruits\security\filters\JwtRequestFilter.class
-com\springframework\passionfruits\security\services\UserDetailsServiceImpl.class

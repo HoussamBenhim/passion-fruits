@@ -2,13 +2,16 @@ package com.springframework.passionfruits.map;
 
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.springframework.passionfruits.moddels.Product;
 import com.springframework.passionfruits.services.ProductCategoryService;
 import com.springframework.passionfruits.services.ProductService;
 import com.springframework.passionfruits.services.ProductSubCategoryService;
+
 @Service
+@Profile({"default", "map"})
 public class ProductMapService extends AbstractMapService<Product, Long> implements ProductService{
 	private final ProductSubCategoryService productSubCategoryService; 
 	private final ProductCategoryService productCategoryService;

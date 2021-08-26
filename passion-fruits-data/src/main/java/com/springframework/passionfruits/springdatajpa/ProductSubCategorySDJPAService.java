@@ -3,10 +3,15 @@ package com.springframework.passionfruits.springdatajpa;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
+
 import com.springframework.passionfruits.moddels.ProductSubCategory;
 import com.springframework.passionfruits.repositories.ProductSubCategoryRepository;
 import com.springframework.passionfruits.services.ProductSubCategoryService;
 
+@Service
+@Profile("springdatajpa")
 public class ProductSubCategorySDJPAService implements ProductSubCategoryService{
 	private final ProductSubCategoryRepository productSubCategoryRepository;
 

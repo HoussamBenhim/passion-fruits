@@ -2,12 +2,14 @@ package com.springframework.passionfruits.map;
 
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.springframework.passionfruits.moddels.ProductSubCategory;
 import com.springframework.passionfruits.services.ProductSubCategoryService;
 
 @Service
+@Profile({"default", "map"})
 public class ProductSubCategoryMapService extends AbstractMapService<ProductSubCategory, Long> implements ProductSubCategoryService{
 	@Override
 	public ProductSubCategory save(ProductSubCategory entity) {
