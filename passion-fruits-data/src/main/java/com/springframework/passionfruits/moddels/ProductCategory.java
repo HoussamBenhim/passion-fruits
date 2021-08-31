@@ -21,18 +21,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "product_categories" )
+@Table(name = "product_category" )
 public class ProductCategory extends BaseEntity {
- 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	@Column(name = "category_name")
 	private String categoryName;
 	@Column(name = "description")
 	private String categoryDescription;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productCategory")
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "productCategory")
+	private Set<Product> products = new HashSet<>(); 
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "productCategory")
 	private Set<ProductSubCategory> productSubCategory = new HashSet<>(); 
 
 	

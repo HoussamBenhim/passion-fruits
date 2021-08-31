@@ -46,7 +46,8 @@ public class DataInitializer implements CommandLineRunner{
 		productSubCategory2=productSubCategoryService.save(productSubCategory2);
 		ProductSubCategory productSubCategory3  = new ProductSubCategory();
 		productSubCategory3.setSubCtergoryName("légumes frais");
-
+		productSubCategory3=productSubCategoryService.save(productSubCategory3);
+		
 		
 		Set<ProductSubCategory> set1= new HashSet();
 		set1.add(productSubCategory1);
@@ -78,7 +79,7 @@ public class DataInitializer implements CommandLineRunner{
 		productCategory3.setCategoryDescription("légumes frais");
 
 		productCategory3.setProductSubCategory(set3);
-		
+		productCategoryService.save(productCategory3);
 		System.	out.println("Product Categories Loaded");
 		
 		Product product1 = new Product();
