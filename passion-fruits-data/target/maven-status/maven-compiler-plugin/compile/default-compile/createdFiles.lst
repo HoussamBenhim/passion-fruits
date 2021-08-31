@@ -1,6 +1,10 @@
 com\springframework\passionfruits\services\ProductSubCategoryService.class
+com\springframework\passionfruits\moddels\ProductSubCategory$ProductSubCategoryBuilder.class
+com\springframework\passionfruits\moddels\AuthenticationResponse$AuthenticationResponseBuilder.class
 com\springframework\passionfruits\springdatajpa\ProductSDJPAService.class
 com\springframework\passionfruits\moddels\AuthenticationRequest.class
+com\springframework\passionfruits\moddels\AuthenticationRequest$AuthenticationRequestBuilder.class
+com\springframework\passionfruits\moddels\Product$ProductBuilder.class
 com\springframework\passionfruits\repositories\ProductSubCategoryRepository.class
 com\springframework\passionfruits\map\ProductSubCategoryMapService.class
 com\springframework\passionfruits\services\ProductCategoryService.class
@@ -18,4 +22,5 @@ com\springframework\passionfruits\map\ProductCategoryMapService.class
 com\springframework\passionfruits\moddels\Product.class
 com\springframework\passionfruits\moddels\ProductSubCategory.class
 com\springframework\passionfruits\springdatajpa\ProductSubCategorySDJPAService.class
+com\springframework\passionfruits\moddels\ProductCategory$ProductCategoryBuilder.class
 com\springframework\passionfruits\moddels\User.class

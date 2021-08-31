@@ -66,8 +66,10 @@ public class ProductMapService extends AbstractMapService<Product, Long> impleme
 
 	@Override
 	public Product findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.findAll()
+				.stream()
+				.filter(product-> product.getName().equalsIgnoreCase(name))
+				.findFirst().orElse(null);
 	}
 
 

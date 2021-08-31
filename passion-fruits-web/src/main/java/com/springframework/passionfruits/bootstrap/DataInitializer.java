@@ -81,7 +81,6 @@ public class DataInitializer implements CommandLineRunner{
 		
 		System.	out.println("Product Categories Loaded");
 		
-
 		Product product1 = new Product();
 		product1.setName("Barquette Mirabelle - 350g");
 		product1.setConservation("Ce produit se conserve au réfrigérateur. Voir date limite de conservation sur l’emballage.");
