@@ -23,7 +23,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+
 @Entity
 @Table(name = "product_sub_category")
 public class ProductSubCategory extends BaseEntity{
@@ -36,6 +36,16 @@ public class ProductSubCategory extends BaseEntity{
 	private ProductCategory productCategory;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productSubCategory")
 	private Set<Product> products = new HashSet<>();
-
+	
+	@Builder
+	public ProductSubCategory(Long id, String subCtergoryName, String subCategoryDescription,
+			ProductCategory productCategory, Set<Product> products) {
+		super(id);
+		this.subCtergoryName = subCtergoryName;
+		this.subCategoryDescription = subCategoryDescription;
+		this.productCategory = productCategory;
+		this.products = products;
+	}
+	
 	
 }
