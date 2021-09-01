@@ -37,16 +37,16 @@ public class ProductMapService extends AbstractMapService<Product, Long> impleme
 		if(entity==null) {
 			return null;
 		}
-		if(entity.getProductCategory() ==null) {
-			throw new RuntimeException("Product Category can't be null!");
+		if(entity.getProductSubCategory()==null) {
+			throw new RuntimeException("Product SubCategory can't be null!");
 		}else {
-			if(entity.getProductCategory().getId()==null) {
-				entity.setProductCategory(productCategoryService.save(entity.getProductCategory()));
-				entity.getProductCategory().getProductSubCategory().forEach(subCat ->{
-					if(subCat.getId()==null) {
-						entity.getProductCategory().getProductSubCategory().add(productSubCategoryService.save(subCat));
-					}
-				});
+			if(entity.getProductSubCategory().getId()==null) {
+				entity.setProductSubCategory(productSubCategoryService.save(entity.getProductSubCategory()));
+				if(entity.getProductSubCategory().getProductCategory() ==null){
+					throw new RuntimeException("Product Category can't be null!");
+				}if(entity.getProductSubCategory().getProductCategory() .getId() ==null) {
+					productCategoryService.save(entity.getProductSubCategory().getProductCategory());
+				} 
 			}
 		}
 		return super.save(entity);

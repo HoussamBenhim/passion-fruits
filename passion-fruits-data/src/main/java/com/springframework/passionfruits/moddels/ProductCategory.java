@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -28,8 +31,9 @@ public class ProductCategory extends BaseEntity {
 	private String categoryName;
 	@Column(name = "description")
 	private String categoryDescription;
-	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "productCategory")
-	private Set<Product> products = new HashSet<>(); 
+//	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "productCategory")
+//	private Set<Product> products = new HashSet<>(); 
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "productCategory")
 	private Set<ProductSubCategory> productSubCategory = new HashSet<>(); 
 

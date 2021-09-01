@@ -23,9 +23,9 @@ public class ProductController {
 
 	@RequestMapping(method = RequestMethod.GET,value ="api/products")
 	public Set<Product> getAllProduct() {
-		System.out.println("getAllProduct");
 		return productService.findAll();
 	}
+	
 	
 
 	

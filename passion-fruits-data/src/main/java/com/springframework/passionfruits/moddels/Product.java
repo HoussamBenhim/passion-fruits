@@ -7,6 +7,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,7 +26,7 @@ public class Product extends BaseEntity{
 	
 	@Builder
 	public Product(Long id, String name, Double price, String origin, String descrption, Integer valeur_nutritionnelle,
-			String conservation, String culture, String image_url, ProductCategory productCategory,
+			String conservation, String culture, String image_url,
 			ProductSubCategory productSubCategory) {
 		super(id);
 		this.name = name;
@@ -34,7 +37,6 @@ public class Product extends BaseEntity{
 		this.conservation = conservation;
 		this.culture = culture;
 		this.image_url = image_url;
-		this.productCategory = productCategory;
 		this.productSubCategory = productSubCategory;
 	}
 	@Column(name = "name")
@@ -53,9 +55,10 @@ public class Product extends BaseEntity{
 	private String culture;
 	@Column(name = "picture")
 	private String image_url;
-	@ManyToOne
-	@JoinColumn(name = "product_category_id")
-	private ProductCategory productCategory;
+//	@ManyToOne
+//	@JoinColumn(name = "product_category_id")
+//	private ProductCategory productCategory;
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "product_sub_cat_id")
 	private ProductSubCategory productSubCategory;

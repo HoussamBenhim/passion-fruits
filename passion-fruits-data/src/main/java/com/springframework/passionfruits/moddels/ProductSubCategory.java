@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.springframework.passionfruits.map.ProductCategoryMapService;
 
 import lombok.AllArgsConstructor;
@@ -31,9 +33,13 @@ public class ProductSubCategory extends BaseEntity{
 	private String subCtergoryName;
 	@Column(name = "description")
 	private String subCategoryDescription;
+	
+	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name = "product_category_id")
 	private ProductCategory productCategory;
+	
+	@JsonBackReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productSubCategory")
 	private Set<Product> products = new HashSet<>();
 	

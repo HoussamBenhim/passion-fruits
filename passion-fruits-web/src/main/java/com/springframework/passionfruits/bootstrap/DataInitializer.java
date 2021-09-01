@@ -38,48 +38,43 @@ public class DataInitializer implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 
 		
-		ProductSubCategory productSubCategory1  = new ProductSubCategory();
-		productSubCategory1.setSubCtergoryName("Fruits rouges");
-		productSubCategory1= productSubCategoryService.save(productSubCategory1);
-		ProductSubCategory productSubCategory2  = new ProductSubCategory();
-		productSubCategory2.setSubCtergoryName("Fruits à noyeau");
-		productSubCategory2=productSubCategoryService.save(productSubCategory2);
-		ProductSubCategory productSubCategory3  = new ProductSubCategory();
-		productSubCategory3.setSubCtergoryName("légumes frais");
-		productSubCategory3=productSubCategoryService.save(productSubCategory3);
+		ProductSubCategory productSubCategoryFruitsRouges  = new ProductSubCategory();
+		productSubCategoryFruitsRouges.setSubCtergoryName("Fruits rouges");
+		productSubCategoryFruitsRouges= productSubCategoryService.save(productSubCategoryFruitsRouges);
+		ProductSubCategory productSubCategoryFruitNoyeau  = new ProductSubCategory();
+		productSubCategoryFruitNoyeau.setSubCtergoryName("Fruits à noyeau");
+		productSubCategoryFruitNoyeau=productSubCategoryService.save(productSubCategoryFruitNoyeau);
+		ProductSubCategory productSubCategoryLegumesJaunes  = new ProductSubCategory();
+		productSubCategoryLegumesJaunes.setSubCtergoryName("légumes jaune");
 		
 		
-		Set<ProductSubCategory> set1= new HashSet();
-		set1.add(productSubCategory1);
-		Set<ProductSubCategory> set2= new HashSet();
-		set2.add(productSubCategory2);
-		Set<ProductSubCategory> set3= new HashSet();
-		set3.add(productSubCategory1);
-		set3.add(productSubCategory2);
-		set3.add(productSubCategory3);
+		
+		Set<ProductSubCategory> listsouscategoryfruits= new HashSet();
+		listsouscategoryfruits.add(productSubCategoryFruitsRouges);
+		listsouscategoryfruits.add(productSubCategoryFruitNoyeau);
+		
+		Set<ProductSubCategory> listsouscategorylégumes= new HashSet();
+		listsouscategorylégumes.add(productSubCategoryLegumesJaunes);
+		
+		
 		
 		System.out.println("Sub categories loaded");
 		
-		ProductCategory productCategory1 = new ProductCategory();
-		productCategory1.setCategoryName("Fruits");
-		productCategory1.setCategoryDescription("Fruits avec un noyeau");
-		productCategory1.setProductSubCategory(set1);  
-		productCategoryService.save(productCategory1);
-		
-		
-		
-		ProductCategory productCategory2 = new ProductCategory();
-		productCategory2.setCategoryName("Fruits");
-		productCategory2.setCategoryDescription("Fruits rouges");
-		productCategory2.setProductSubCategory(set2);
-		productCategoryService.save(productCategory2);
-		
-		ProductCategory productCategory3 = new ProductCategory();
-		productCategory3.setCategoryName("légumes");
-		productCategory3.setCategoryDescription("légumes frais");
+		ProductCategory productCategoryFruits = new ProductCategory();
+		productCategoryFruits.setCategoryName("Fruits");
+		productCategoryFruits.setCategoryDescription("Fruits avec un noyeau");
+		productCategoryFruits.setProductSubCategory(listsouscategoryfruits);  
+		productCategoryService.save(productCategoryFruits);
+		productSubCategoryFruitsRouges.setProductCategory(productCategoryFruits);
+		productSubCategoryFruitsRouges=productSubCategoryService.save(productSubCategoryFruitsRouges);
+		ProductCategory productCategoryLegumes = new ProductCategory();
+		productCategoryLegumes.setCategoryName("Fruits");
+		productCategoryLegumes.setCategoryDescription("Fruits avec un noyeau");
+		productCategoryLegumes.setProductSubCategory(listsouscategorylégumes);  
+		productCategoryService.save(productCategoryLegumes);
+		productSubCategoryLegumesJaunes.setProductCategory(productCategoryLegumes);
+		productSubCategoryLegumesJaunes=productSubCategoryService.save(productSubCategoryLegumesJaunes);
 
-		productCategory3.setProductSubCategory(set3);
-		productCategoryService.save(productCategory3);
 		System.	out.println("Product Categories Loaded");
 		
 		Product product1 = new Product();
@@ -90,20 +85,19 @@ public class DataInitializer implements CommandLineRunner{
 		product1.setOrigin("Portugal / Espagne");
 		product1.setImage_url("cherry-plum-5366060_640.jpg");
 		product1.setPrice(3.5);
-		product1.setProductCategory(productCategory1);
 		product1.setValeur_nutritionnelle(40);
+		product1.setProductSubCategory(productSubCategoryFruitsRouges);
 		productService.save(product1);
 		
 		Product product2 = new Product();
-		product2.setName("Barquette de cerise - Gard");
+		product2.setName("Barquette de Carotte - Gard");
 		product2.setConservation("Ce produit se conserve au réfrigérateur. Voir date limite de conservation sur l’emballage.");
 		product2.setCulture("Agriculture raisonnée");
 		product2.setDescrption("De belles myrtilles savoureuses, parce que sinon c'est pas vraiment l'été !");
 		product2.setOrigin("Maroc");
 		product2.setImage_url("cherry-3074284_640.jpg");
 		product2.setPrice(2.5);
-		product2.setProductCategory(productCategory3);
-		
+		product2.setProductSubCategory(productSubCategoryLegumesJaunes);
 		product2.setValeur_nutritionnelle(50);
 		productService.save(product2);
 		
@@ -113,14 +107,8 @@ public class DataInitializer implements CommandLineRunner{
 		System.out.println(configTest.getUsername());
 		System.out.println(configTest.getPassword());
 		System.out.println(configTest.getJdbcurl());
-		System.out.println(product2.getProductCategory().getId());
 		
-		System.out.println("---------------------subCategories Loaded----------------------- ");
-		
-		product2.getProductCategory().getProductSubCategory().forEach(subCat -> {
-		System.out.println(subCat.getId());
-		});
-		System.out.println(product2.getProductCategory().getId());
+
 		
 	}
 

@@ -20,25 +20,24 @@ class ProductMapServiceTest2 {
 	ProductCategoryMapService productCategoryMapService;
 	Long productId = 1L;
 	String name= "pomme";
+	ProductSubCategory productSubCat;
+	ProductCategory productCat;
+	Product product;
 	@BeforeEach
 	void setUp() throws Exception {
 		productSubCategoryMapService = new ProductSubCategoryMapService();
 		productCategoryMapService= new ProductCategoryMapService();
-		ProductCategory productCat = ProductCategory.builder().categoryName("Fruits").build();
-		ProductSubCategory productSubCat = ProductSubCategory.builder().subCtergoryName("fruits rouges").build();
+		productCat = ProductCategory.builder().categoryName("Fruits").build();
+		productSubCat = ProductSubCategory.builder().subCtergoryName("fruits rouges").build();
 		productSubCategoryMapService.save(productSubCat);
 		productCategoryMapService.save(productCat);
 		productMapService = new ProductMapService(productSubCategoryMapService, productCategoryMapService);
 		System.out.println(productCategoryMapService.findByName("Fruits"));
-		Product product = Product.builder().id(productId).name(name).productCategory(productCat).productSubCategory(productSubCat).build();
+		product = Product.builder().id(productId).name(name).productSubCategory(productSubCat).build();
 		productMapService.save(product);
 	
 	}
 
-	@Test
-	void testProductMapService() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	void testFindAll() {
@@ -55,15 +54,14 @@ class ProductMapServiceTest2 {
 	@Test
 	void testSaveProductExistingId() {
 		Long id =1L;
-		Product product2= Product.builder().id(id).productCategory(productCategoryMapService.findById(id)).build();
+		Product product2= Product.builder().id(id).productSubCategory(productSubCat).build();
 		Product productSaved = productMapService.save(product2);
 		assertEquals(id, productSaved.getId());
 	}
 
 	@Test
 	void testSaveProductNoId() {
-		Long id =1L;
-		Product product3= Product.builder().productCategory(productCategoryMapService.findById(id)).build();
+		Product product3= Product.builder().productSubCategory(productSubCat).build();
 		Product productSaved = productMapService.save(product3);
 		assertNotNull(productSaved);
 		assertNotNull(productSaved.getId());
