@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.springframework.passionfruits.controllers.ProductControllerTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.305 s - in com.springframework.passionfruits.controllers.ProductControllerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.363 s - in com.springframework.passionfruits.controllers.ProductControllerTest

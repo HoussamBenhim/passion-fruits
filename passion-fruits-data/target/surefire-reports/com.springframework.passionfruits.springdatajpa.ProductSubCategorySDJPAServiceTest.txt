@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.springframework.passionfruits.springdatajpa.ProductSubCategorySDJPAServiceTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.6 s - in com.springframework.passionfruits.springdatajpa.ProductSubCategorySDJPAServiceTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.592 s - in com.springframework.passionfruits.springdatajpa.ProductSubCategorySDJPAServiceTest
