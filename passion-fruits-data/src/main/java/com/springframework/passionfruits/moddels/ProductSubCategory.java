@@ -34,12 +34,12 @@ public class ProductSubCategory extends BaseEntity{
 	@Column(name = "description")
 	private String subCategoryDescription;
 	
-	@JsonManagedReference
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "product_category_id")
 	private ProductCategory productCategory;
 	
-	@JsonBackReference
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productSubCategory")
 	private Set<Product> products = new HashSet<>();
 	

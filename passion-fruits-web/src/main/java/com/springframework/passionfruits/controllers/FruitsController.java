@@ -2,7 +2,10 @@ package com.springframework.passionfruits.controllers;
 
 import java.util.Set;
 
+import javax.persistence.MappedSuperclass;
+
 import org.springframework.context.MessageSource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,23 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springframework.passionfruits.moddels.Product;
 import com.springframework.passionfruits.services.ProductService;
 
+@RequestMapping("/fruits")
 @RestController
-public class ProductController {
+public class FruitsController {
 
 	private final ProductService productService;
 	private final MessageSource messageSource;  
 	
-	public ProductController(ProductService productService, MessageSource messageSource) {
+	public FruitsController(ProductService productService, MessageSource messageSource) {
 		this.productService = productService;
 		this.messageSource = messageSource;
 	}
 
-	@RequestMapping(method = RequestMethod.GET,value ="api/products")
-	public Set<Product> getAllProduct() {
-		return productService.findAll();
+	@RequestMapping(method = RequestMethod.GET,value ="/list")
+	public ResponseEntity<?> getAllProduct() {
+		return  ResponseEntity.ok().body(productService.findAll());
 	}
-	
-	
-
 	
 }

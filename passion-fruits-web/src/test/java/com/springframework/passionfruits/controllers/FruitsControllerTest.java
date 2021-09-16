@@ -30,11 +30,11 @@ import com.springframework.passionfruits.services.ProductService;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class ProductControllerTest {
+class FruitsControllerTest {
 	@Mock
 	ProductService productService;
 	@InjectMocks
-	ProductController productController;
+	FruitsController productController;
 	Set<Product> products;
 	@Autowired
 	MockMvc mockMvc;

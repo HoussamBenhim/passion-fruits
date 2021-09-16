@@ -33,7 +33,7 @@ public class ProductCategory extends BaseEntity {
 	private String categoryDescription;
 //	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "productCategory")
 //	private Set<Product> products = new HashSet<>(); 
-	@JsonBackReference
+	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.REMOVE, mappedBy = "productCategory")
 	private Set<ProductSubCategory> productSubCategory = new HashSet<>(); 
 

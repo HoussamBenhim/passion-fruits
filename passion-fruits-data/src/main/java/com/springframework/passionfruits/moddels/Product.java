@@ -1,9 +1,14 @@
 package com.springframework.passionfruits.moddels;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -32,7 +37,7 @@ public class Product extends BaseEntity{
 		this.name = name;
 		this.price = price;
 		this.origin = origin;
-		this.descrption = descrption;
+		this.description = descrption;
 		this.valeur_nutritionnelle = valeur_nutritionnelle;
 		this.conservation = conservation;
 		this.culture = culture;
@@ -40,13 +45,13 @@ public class Product extends BaseEntity{
 		this.productSubCategory = productSubCategory;
 	}
 	@Column(name = "name")
-	private String name;
+	private String name; 
 	@Column(name = "price")
 	private Double price;
 	@Column(name = "origin")
 	private String origin;
 	@Column(name = "description")
-	private String descrption;
+	private String description;
 	@Column(name = "nutrition_score")
 	private Integer valeur_nutritionnelle;
 	@Column(name = "conservation")
@@ -58,9 +63,11 @@ public class Product extends BaseEntity{
 //	@ManyToOne
 //	@JoinColumn(name = "product_category_id")
 //	private ProductCategory productCategory;
-	@JsonManagedReference
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "product_sub_cat_id")
 	private ProductSubCategory productSubCategory;
-	
+	@JsonManagedReference
+	@OneToMany(cascade = CascadeType.ALL,  mappedBy = "product")
+	private Set<ProductDescription> poductDescriptionList = new HashSet();
 }

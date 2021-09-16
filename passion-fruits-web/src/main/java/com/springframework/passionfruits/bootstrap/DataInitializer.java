@@ -40,10 +40,10 @@ public class DataInitializer implements CommandLineRunner{
 		
 		ProductSubCategory productSubCategoryFruitsRouges  = new ProductSubCategory();
 		productSubCategoryFruitsRouges.setSubCtergoryName("Fruits rouges");
-		productSubCategoryFruitsRouges= productSubCategoryService.save(productSubCategoryFruitsRouges);
+		
 		ProductSubCategory productSubCategoryFruitNoyeau  = new ProductSubCategory();
 		productSubCategoryFruitNoyeau.setSubCtergoryName("Fruits à noyeau");
-		productSubCategoryFruitNoyeau=productSubCategoryService.save(productSubCategoryFruitNoyeau);
+		
 		ProductSubCategory productSubCategoryLegumesJaunes  = new ProductSubCategory();
 		productSubCategoryLegumesJaunes.setSubCtergoryName("légumes jaune");
 		
@@ -61,17 +61,19 @@ public class DataInitializer implements CommandLineRunner{
 		System.out.println("Sub categories loaded");
 		
 		ProductCategory productCategoryFruits = new ProductCategory();
-		productCategoryFruits.setCategoryName("Fruits");
+		productCategoryFruits.setCategoryName("EPICERIE1");
 		productCategoryFruits.setCategoryDescription("Fruits avec un noyeau");
 		productCategoryFruits.setProductSubCategory(listsouscategoryfruits);  
-		productCategoryService.save(productCategoryFruits);
+		productCategoryFruits = productCategoryService.save(productCategoryFruits);
 		productSubCategoryFruitsRouges.setProductCategory(productCategoryFruits);
-		productSubCategoryFruitsRouges=productSubCategoryService.save(productSubCategoryFruitsRouges);
+		productSubCategoryFruitsRouges= productSubCategoryService.save(productSubCategoryFruitsRouges);
+		productSubCategoryFruitNoyeau.setProductCategory(productCategoryFruits);
+		productSubCategoryFruitNoyeau=productSubCategoryService.save(productSubCategoryFruitNoyeau);
 		ProductCategory productCategoryLegumes = new ProductCategory();
-		productCategoryLegumes.setCategoryName("Fruits");
+		productCategoryLegumes.setCategoryName("EPICERIE2");
 		productCategoryLegumes.setCategoryDescription("Fruits avec un noyeau");
 		productCategoryLegumes.setProductSubCategory(listsouscategorylégumes);  
-		productCategoryService.save(productCategoryLegumes);
+		productCategoryLegumes =productCategoryService.save(productCategoryLegumes);
 		productSubCategoryLegumesJaunes.setProductCategory(productCategoryLegumes);
 		productSubCategoryLegumesJaunes=productSubCategoryService.save(productSubCategoryLegumesJaunes);
 
@@ -81,7 +83,7 @@ public class DataInitializer implements CommandLineRunner{
 		product1.setName("Barquette Mirabelle - 350g");
 		product1.setConservation("Ce produit se conserve au réfrigérateur. Voir date limite de conservation sur l’emballage.");
 		product1.setCulture("Agriculture raisonnée");
-		product1.setDescrption("De belles myrtilles savoureuses, parce que sinon c'est pas vraiment l'été !");
+		product1.setDescription("De belles myrtilles savoureuses, parce que sinon c'est pas vraiment l'été !");
 		product1.setOrigin("Portugal / Espagne");
 		product1.setImage_url("cherry-plum-5366060_640.jpg");
 		product1.setPrice(3.5);
@@ -93,7 +95,7 @@ public class DataInitializer implements CommandLineRunner{
 		product2.setName("Barquette de Carotte - Gard");
 		product2.setConservation("Ce produit se conserve au réfrigérateur. Voir date limite de conservation sur l’emballage.");
 		product2.setCulture("Agriculture raisonnée");
-		product2.setDescrption("De belles myrtilles savoureuses, parce que sinon c'est pas vraiment l'été !");
+		product2.setDescription("De belles myrtilles savoureuses, parce que sinon c'est pas vraiment l'été !");
 		product2.setOrigin("Maroc");
 		product2.setImage_url("cherry-3074284_640.jpg");
 		product2.setPrice(2.5);
