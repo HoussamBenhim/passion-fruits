@@ -38,6 +38,7 @@ class FruitsControllerTest {
 	Set<Product> products;
 	@Autowired
 	MockMvc mockMvc;
+	private final Long ID =1L;
 	@BeforeEach
 	void setUp() throws Exception {
 		products = new HashSet<>();
@@ -53,6 +54,15 @@ class FruitsControllerTest {
 		mockMvc.perform(get("/fruits/list"))
 					.andExpect(status().isOk()).andExpect(jsonPath("$[0].name", is("banane")));
 
+	}
+	
+	@Test
+	
+	void testfindFruitById() throws Exception {
+		when(productService.findById(ID)).thenReturn(Product.builder().id(1L).name("banane").build());
+		mockMvc.perform(get("/fruits/1"))
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.name", is("banane")));
 	}
 
 }
