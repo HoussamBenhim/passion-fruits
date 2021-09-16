@@ -21,12 +21,19 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
+
 @Entity
 @Table(name = "product_category" )
 public class ProductCategory extends BaseEntity {
-
+	
+	@Builder
+	public ProductCategory(Long id,String categoryName, String categoryDescription,
+			Set<ProductSubCategory> productSubCategory) {
+		super(id);
+		this.categoryName = categoryName;
+		this.categoryDescription = categoryDescription;
+		this.productSubCategory = productSubCategory;
+	}
 	@Column(name = "category_name")
 	private String categoryName;
 	@Column(name = "description")

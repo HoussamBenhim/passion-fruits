@@ -50,7 +50,7 @@ class FruitsControllerTest {
 	void testGetAllProduct() throws Exception {
 
 		when(productService.findAll()).thenReturn(products);
-		mockMvc.perform(get("/api/products"))
+		mockMvc.perform(get("/fruits/list"))
 					.andExpect(status().isOk()).andExpect(jsonPath("$[0].name", is("banane")));
 
 	}
