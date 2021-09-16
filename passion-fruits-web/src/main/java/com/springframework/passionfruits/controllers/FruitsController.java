@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springframework.passionfruits.exceptions.NotFoundException;
 import com.springframework.passionfruits.moddels.Product;
 import com.springframework.passionfruits.services.ProductService;
 
@@ -34,7 +35,11 @@ public class FruitsController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> findFruitById(@PathVariable String id){
-		return ResponseEntity.ok().body(productService.findById(Long.valueOf(id)));
+		Product product = productService.findById(Long.valueOf(id));
+		if(product ==null) {
+			throw new NotFoundException("Fruit introuvable");
+		}
+		return ResponseEntity.ok().body(product);
 	}
 	
 }

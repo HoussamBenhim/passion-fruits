@@ -55,9 +55,14 @@ class FruitsControllerTest {
 					.andExpect(status().isOk()).andExpect(jsonPath("$[0].name", is("banane")));
 
 	}
+	@Test
+	public void testfindFruitByIdNotFound() throws Exception {
+		Product product = null;
+		when(productService.findById(1L)).thenReturn(product);
+		mockMvc.perform(get("/fruits/1")).andExpect(status().is4xxClientError());
+	}
 	
 	@Test
-	
 	void testfindFruitById() throws Exception {
 		when(productService.findById(ID)).thenReturn(Product.builder().id(1L).name("banane").build());
 		mockMvc.perform(get("/fruits/1"))
