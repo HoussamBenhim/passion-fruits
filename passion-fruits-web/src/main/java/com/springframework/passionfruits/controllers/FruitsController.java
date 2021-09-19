@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.persistence.MappedSuperclass;
 
 import org.springframework.context.MessageSource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
