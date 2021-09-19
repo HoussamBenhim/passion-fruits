@@ -1,3 +1,7 @@
+
+create user 'client_user_dev'@'localhost' identified by 'aG7gDD35';
+grant update, select, delete, insert on passionfruitsdb.* to 'client_user_dev'@'localhost';
+
 DROP TABLE IF EXISTS PRODUCT;
 CREATE TABLE PRODUCT(
 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
