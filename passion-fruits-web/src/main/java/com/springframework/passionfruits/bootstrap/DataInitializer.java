@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import com.springframework.passionfruits.configForProfileTest;
@@ -15,6 +16,7 @@ import com.springframework.passionfruits.services.ProductCategoryService;
 import com.springframework.passionfruits.services.ProductService;
 import com.springframework.passionfruits.services.ProductSubCategoryService;
 
+@Profile("default")
 @Component
 public class DataInitializer implements CommandLineRunner{
 	private final ProductService productService;

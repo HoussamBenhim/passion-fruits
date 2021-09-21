@@ -3,6 +3,7 @@ package com.springframework.passionfruits.springdatajpa;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.springframework.passionfruits.moddels.ProductDescription;
@@ -12,6 +13,7 @@ import com.springframework.passionfruits.services.ProductDescriptionService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Profile("springdatajpa")
 @Service
 public class ProductDescriptionSDJPAService implements ProductDescriptionService {
 

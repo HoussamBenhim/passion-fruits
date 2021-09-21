@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import com.springframework.passionfruits.moddels.Product;
 import com.springframework.passionfruits.repositories.ProductRepository;
 import com.springframework.passionfruits.services.ProductService;
-@Service
+
 @Profile("springdatajpa")
+@Service
+
 public class ProductSDJPAService implements ProductService {
 	private final ProductRepository productRepository;
 	

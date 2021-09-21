@@ -10,8 +10,9 @@ import com.springframework.passionfruits.moddels.ProductSubCategory;
 import com.springframework.passionfruits.repositories.ProductSubCategoryRepository;
 import com.springframework.passionfruits.services.ProductSubCategoryService;
 
-@Service
 @Profile("springdatajpa")
+@Service
+
 public class ProductSubCategorySDJPAService implements ProductSubCategoryService{
 	private final ProductSubCategoryRepository productSubCategoryRepository;
 
