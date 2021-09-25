@@ -24,6 +24,7 @@ import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -38,11 +39,11 @@ import com.springframework.passionfruits.services.ProductService;
 class ProductCategoryControllerTest extends AbstractRestControllerTest {
 	
 	
-	@Mock
+	@MockBean
 	ProductCategoryService productCategoryService;
-	@InjectMocks
-	ProductCategoryController categoryController;
 	@Autowired
+	ProductCategoryController categoryController;
+	
 	MockMvc mockMvc;
 	ProductCategory category;
 	Set<ProductCategory> listCategories;
@@ -55,6 +56,7 @@ class ProductCategoryControllerTest extends AbstractRestControllerTest {
 		 categoryName= "FRUITS";
 		 category = new ProductCategory();
 		 category.setCategoryName("FRUITS");
+		 
 		
 	}
 
@@ -71,6 +73,18 @@ class ProductCategoryControllerTest extends AbstractRestControllerTest {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	void testcreateCategory() throws Exception{
+		
+		//String categoryJson = new JSONObject().put("categoryName", category.getCategoryName()).put("categoryDescription", category.getCategoryDescription()).put("id", category.getId().toString()).toString();
+		when(productCategoryService.save(category)).thenReturn(category);		
+		mockMvc.perform(post("/categories")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(asJsonString(category)))
+		.andExpect(status().isOk())
+		.andDo(print());
+	}
 
 	@Test
 	void testGetCategory() {
@@ -86,15 +100,6 @@ class ProductCategoryControllerTest extends AbstractRestControllerTest {
 		}
 	}
 	
-	@Test
-	void testcreateCategory() throws Exception{
-		
-		//String categoryJson = new JSONObject().put("categoryName", category.getCategoryName()).put("categoryDescription", category.getCategoryDescription()).put("id", category.getId().toString()).toString();
-		//when(productCategoryService.save(category)).thenReturn(category);
-		mockMvc.perform(post("/categories")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(asJsonString(category)))
-		.andExpect(status().isOk());
-	}
+	
 
 }
