@@ -1,11 +1,14 @@
 package com.springframework.passionfruits.controllers;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withServerError;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -13,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.HashSet;
 import java.util.Set;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,6 +24,7 @@ import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -30,7 +35,7 @@ import com.springframework.passionfruits.services.ProductService;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class ProductCategoryControllerTest {
+class ProductCategoryControllerTest extends AbstractRestControllerTest {
 	
 	
 	@Mock
@@ -50,7 +55,7 @@ class ProductCategoryControllerTest {
 		 categoryName= "FRUITS";
 		 category = new ProductCategory();
 		 category.setCategoryName("FRUITS");
-		 category.setId(1L);
+		
 	}
 
 	@Test
@@ -79,8 +84,17 @@ class ProductCategoryControllerTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	void testcreateCategory() throws Exception{
 		
-		
+		//String categoryJson = new JSONObject().put("categoryName", category.getCategoryName()).put("categoryDescription", category.getCategoryDescription()).put("id", category.getId().toString()).toString();
+		//when(productCategoryService.save(category)).thenReturn(category);
+		mockMvc.perform(post("/categories")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(asJsonString(category)))
+		.andExpect(status().isOk());
 	}
 
 }

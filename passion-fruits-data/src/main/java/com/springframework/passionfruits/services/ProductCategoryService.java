@@ -6,4 +6,5 @@ import com.springframework.passionfruits.moddels.ProductCategory;
 
 public interface ProductCategoryService extends CrudService<ProductCategory, Long> {
 	ProductCategory findByName(String name);
+	
 }
