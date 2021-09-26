@@ -122,7 +122,7 @@ class ProductCategoryControllerTest extends AbstractRestControllerTest {
 		mockMvc.perform(put("/categories/1").contentType(MediaType.APPLICATION_JSON).content(asJsonString(category)))
 					.andExpect(status().isOk())
 					.andExpect(jsonPath("$.categoryName", is("Legumes")))
-					.andExpect(jsonPath("$.id", equalTo( "1") ));
+					.andExpect(jsonPath("$.id", equalTo( 1) ));
 		
 	}
 	
