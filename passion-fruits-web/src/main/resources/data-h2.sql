@@ -1,6 +1,11 @@
-create database passionfruitsdb character set 'utf8'
-use passionfruitsdb;
-
+drop table if exists PRODUCT_DESCRIPTION;  
+    CREATE TABLE PRODUCT_DESCRIPTION(
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    description text NOT NULL,
+    product_id INT UNSIGNED NOT NULL,
+    PRIMARY KEY (id)
+    );
+drop table if exists PRODUCT;
  CREATE TABLE PRODUCT(
     id int UNSIGNED NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
@@ -14,21 +19,7 @@ use passionfruitsdb;
     product_sub_cat_id INT UNSIGNED NOT NULL,
     PRIMARY KEY (id)
     );
-    
-    CREATE TABLE PRODUCT_DESCRIPTION(
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    description text NOT NULL,
-    product_id INT UNSIGNED NOT NULL,
-    PRIMARY KEY (id)
-    );
-
-    CREATE TABLE PRODUCT_CATEGORY(
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    category_name VARCHAR(100) NOT NULL UNIQUE,
-    description VARCHAR(50) DEFAULT NULL,
-    PRIMARY KEY (id)
-    );
-    
+       drop table if exists PRODUCT_SUB_CATEGORY; 
 	CREATE TABLE PRODUCT_SUB_CATEGORY(
 	 	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
  		sub_category_name VARCHAR(100) NOT NULL UNIQUE,
@@ -36,6 +27,15 @@ use passionfruitsdb;
  		product_category_id int UNSIGNED NOT NULL,
  	PRIMARY KEY (id)
 );
+    drop table if exists PRODUCT_CATEGORY; 
+
+    CREATE TABLE PRODUCT_CATEGORY(
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    category_name VARCHAR(100) NOT NULL UNIQUE,
+    description VARCHAR(50) DEFAULT NULL,
+    PRIMARY KEY (id)
+    );
+
      ALTER TABLE PRODUCT_DESCRIPTION ADD CONSTRAINT fk_product_id FOREIGN KEY (product_id) REFERENCES PRODUCT (id) on delete cascade;	
      ALTER TABLE PRODUCT ADD CONSTRAINT fk_product_sub_category_id FOREIGN KEY (product_sub_cat_id) REFERENCES PRODUCT_SUB_CATEGORY (id);
      ALTER TABLE PRODUCT_SUB_CATEGORY ADD CONSTRAINT fk_product_category_id FOREIGN KEY (product_category_id) REFERENCES PRODUCT_CATEGORY (id);

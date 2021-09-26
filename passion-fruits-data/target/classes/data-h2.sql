@@ -27,6 +27,7 @@ drop table if exists PRODUCT;
  		product_category_id int UNSIGNED NOT NULL,
  	PRIMARY KEY (id)
 );
+   
     drop table if exists PRODUCT_CATEGORY; 
 
     CREATE TABLE PRODUCT_CATEGORY(
@@ -35,7 +36,7 @@ drop table if exists PRODUCT;
     description VARCHAR(50) DEFAULT NULL,
     PRIMARY KEY (id)
     );
-
+ 
      ALTER TABLE PRODUCT_DESCRIPTION ADD CONSTRAINT fk_product_id FOREIGN KEY (product_id) REFERENCES PRODUCT (id) on delete cascade;	
      ALTER TABLE PRODUCT ADD CONSTRAINT fk_product_sub_category_id FOREIGN KEY (product_sub_cat_id) REFERENCES PRODUCT_SUB_CATEGORY (id);
      ALTER TABLE PRODUCT_SUB_CATEGORY ADD CONSTRAINT fk_product_category_id FOREIGN KEY (product_category_id) REFERENCES PRODUCT_CATEGORY (id);
@@ -105,38 +106,3 @@ INSERT INTO PRODUCT (name,price,origin,description,nutrition_score,conservation,
 
 INSERT INTO PRODUCT (name,price,origin,description,nutrition_score,conservation,agriculture,picture,product_sub_cat_id)  values ('Echalote - 125g',5,'MAROC','De belles myrtilles savoureuses, parce que sinon c est pas vraiment l été !',100,'Ce produit se conserve au réfrigérateur. Voir date limite de conservation sur l’emballage.','Agriculture raisonnée','echalotes-de-plougoulm-ebarbees-a-la-main-250g.jpg',6);
 
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
