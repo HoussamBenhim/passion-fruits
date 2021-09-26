@@ -1,5 +1,6 @@
 package com.springframework.passionfruits.controllers;
 
+import static org.hamcrest.CoreMatchers.any;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,6 +9,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withServerError;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -125,7 +127,19 @@ class ProductCategoryControllerTest extends AbstractRestControllerTest {
 					.andExpect(jsonPath("$.id", equalTo( 1) ));
 		
 	}
-	
+	@Test
+	void testpatchCatregory() throws Exception {
+		String updateName = "updateName";
+		ProductCategory category = ProductCategory.builder().id(1L).categoryDescription("Test").categoryName("catagoryName").build();
+		ProductCategory savedCategory = ProductCategory.builder().id(1L).categoryDescription("Test").categoryName(updateName).build();
+		when(productCategoryService.patchCatregory(anyLong(), anyObject())).thenReturn(savedCategory);
+		mockMvc.perform(patch("/categories/1").contentType(MediaType.APPLICATION_JSON).content(asJsonString(category)))
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$.categoryName", is(updateName)))
+			.andExpect(jsonPath("$.categoryDescription", is("Test")));
+		
+		
+	}
 
 	
 	
