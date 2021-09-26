@@ -52,6 +52,12 @@ public class ProductCategorySDJPAService implements ProductCategoryService {
 		return productCategoryRepository.findByCategoryName(name);
 	}
 
+	@Override
+	public ProductCategory updateCatregory(Long id, ProductCategory category) {
+		category.setId(id);
+		return productCategoryRepository.save(category);
+	}
+
 
 	
 }

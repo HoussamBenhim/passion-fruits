@@ -41,4 +41,10 @@ public class ProductCategoryMapService extends AbstractMapService<ProductCategor
 		return null;
 	}
 
+	@Override
+	public ProductCategory updateCatregory(Long id, ProductCategory category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
