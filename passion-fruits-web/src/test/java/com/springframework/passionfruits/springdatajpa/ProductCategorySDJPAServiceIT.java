@@ -1,38 +1,24 @@
 package com.springframework.passionfruits.springdatajpa;
 
-
-import static org.assertj.core.api.Assertions.not;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.internal.configuration.MockAnnotationProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.springframework.passionfruits.configForProfileTest;
-import com.springframework.passionfruits.bootstrap.DataInitializer;
 import com.springframework.passionfruits.moddels.ProductCategory;
 import com.springframework.passionfruits.repositories.ProductCategoryRepository;
 import com.springframework.passionfruits.repositories.ProductRepository;
 import com.springframework.passionfruits.repositories.ProductSubCategoryRepository;
-import com.springframework.passionfruits.services.ProductCategoryService;
-import com.springframework.passionfruits.services.ProductService;
-import com.springframework.passionfruits.services.ProductSubCategoryService;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
