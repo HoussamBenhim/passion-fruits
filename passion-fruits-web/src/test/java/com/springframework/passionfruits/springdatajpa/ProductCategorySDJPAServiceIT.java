@@ -61,11 +61,7 @@ class ProductCategorySDJPAServiceIT {
 		productService = new ProductSDJPAService(productRepository);
 		productCategoryService = new ProductCategorySDJPAService(categoryRepository);
 		productSubCategoryService = new ProductSubCategorySDJPAService(productsubRepository);
-		
-		//MockitoAnnotations.initMocks(this);
-	
-		
-		//bootstrap.run(); // load data
+
 	}
 
 	@Test
