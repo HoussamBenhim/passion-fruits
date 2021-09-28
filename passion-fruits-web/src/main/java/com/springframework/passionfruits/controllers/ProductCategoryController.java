@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springframework.passionfruits.exceptions.NotFoundException;
+import com.springframework.passionfruits.moddels.Product;
 import com.springframework.passionfruits.moddels.ProductCategory;
 import com.springframework.passionfruits.services.ProductCategoryService;
 
@@ -54,5 +56,13 @@ public class ProductCategoryController {
 	@PatchMapping("/{id}")
 	public ResponseEntity<?> patchCatregory(@PathVariable Long id, @RequestBody ProductCategory category){
 		return new ResponseEntity<ProductCategory>(productCategoryService.patchCatregory(id,category), HttpStatus.OK);
+	}
+	@GetMapping("/cat/{id}")
+	public ResponseEntity<?> findCategoryById(@PathVariable String id){
+		ProductCategory category = productCategoryService.findById(Long.valueOf(id));
+		if(category ==null) {
+			throw new NotFoundException("Categorie introuvable");
+		}
+		return ResponseEntity.ok().body(category);
 	}
 }
