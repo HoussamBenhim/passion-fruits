@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import org.hibernate.tool.schema.ast.SqlScriptParserException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import com.springframework.passionfruits.moddels.ProductSubCategory;
 import com.springframework.passionfruits.repositories.ProductCategoryRepository;
 import com.springframework.passionfruits.services.ProductCategoryService;
 
+import javassist.NotFoundException;
 import net.bytebuddy.implementation.bytecode.Throw;
 
 @Service
@@ -68,27 +70,30 @@ public class ProductCategorySDJPAService implements ProductCategoryService {
 
 	@Override
 	public ProductCategory patchCatregory(Long id, ProductCategory category) {
+		ProductCategory savedCategory = productCategoryRepository.findById(id).orElseThrow(()-> new ItemNotFoundException("Category with id : " + id + "not found") );
 		try {
-			ProductCategory savedCategory = productCategoryRepository.findById(id).orElseThrow();
 			Method[] methods = category.getClass().getDeclaredMethods();
 			for (Method method : methods) {
 				if (method.getName().startsWith("get")) {
 					if (method.getReturnType() == Long.class) {
 						if (method.invoke(category) != null) {
-							savedCategory.getClass().getMethod("set" + method.getName().substring(3), method.getReturnType()).invoke(savedCategory, (Long) method.invoke(category)) ;
+							savedCategory.getClass()
+									.getMethod("set" + method.getName().substring(3), method.getReturnType())
+									.invoke(savedCategory, (Long) method.invoke(category));
 						}
-					} else if(method.getReturnType() == String.class) {
+					} else if (method.getReturnType() == String.class) {
 						if (method.invoke(category) != null) {
-							savedCategory.getClass().getMethod("set" + method.getName().substring(3), method.getReturnType()).invoke(savedCategory, (String) method.invoke(category)) ;
+							savedCategory.getClass()
+									.getMethod("set" + method.getName().substring(3), method.getReturnType())
+									.invoke(savedCategory, (String) method.invoke(category));
 						}
-					} 
+					}
 				}
 			}
-			return productCategoryRepository.save(savedCategory);
 		} catch (Exception e) {
-			throw new ItemNotFoundException("Category with id : " + id +"not found");
+			e.printStackTrace();
 		}
-		
+		return productCategoryRepository.save(savedCategory);
 	}
 
 }

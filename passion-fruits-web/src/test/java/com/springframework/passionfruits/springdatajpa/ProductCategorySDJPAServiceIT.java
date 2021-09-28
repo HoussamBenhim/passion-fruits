@@ -70,8 +70,10 @@ class ProductCategorySDJPAServiceIT {
 
 	@Test
 	void testpatchCatergoryUpdateName() {
-		ProductCategory category = ProductCategory.builder().categoryName("Legumes").id(23L).categoryDescription("description Test").build();
-		categoryRepository.save(category);
+		ProductCategory category = ProductCategory.builder().categoryName("Test").id(23L).categoryDescription("description Test").build();
+		if(  categoryRepository.findByCategoryName(category.getCategoryName()) ==null  ) {			
+			categoryRepository.save(category);
+		}
 		Set<ProductCategory> list = new HashSet<>();
 		categoryRepository.findAll().forEach(list::add);
 		Long id = !list.isEmpty() ? list.iterator().next().getId() : 0 ;
