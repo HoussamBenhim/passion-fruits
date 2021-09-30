@@ -1,0 +1,8 @@
+com\springframework\passionfruits\map\ProductMapServiceTest.class
+com\springframework\passionfruits\PassionFruitsApplicationTests.class
+com\springframework\passionfruits\springdatajpa\ProductSubCategorySDJPAServiceTest.class
+com\springframework\passionfruits\controllers\FruitsControllerTest.class
+com\springframework\passionfruits\springdatajpa\ProductDescriptionSDJPAServiceTest.class
+com\springframework\passionfruits\springdatajpa\ProductCategorySDJPAServiceIT.class
+com\springframework\passionfruits\controllers\AbstractRestControllerTest.class
+com\springframework\passionfruits\controllers\ProductCategoryControllerTest.class
