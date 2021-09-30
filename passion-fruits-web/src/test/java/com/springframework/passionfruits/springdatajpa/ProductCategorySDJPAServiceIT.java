@@ -52,14 +52,18 @@ class ProductCategorySDJPAServiceIT {
 
 	@Test
 	void testpatchCatergoryUpdateName() {
+		String updateName = "UpdateName";
 		ProductCategory category = ProductCategory.builder().categoryName("Test").id(23L).categoryDescription("description Test").build();
 		if(  categoryRepository.findByCategoryName(category.getCategoryName()) ==null  ) {			
 			categoryRepository.save(category);
 		}
+		if(categoryRepository.findByCategoryName(updateName) !=null) {
+			categoryRepository.deleteById(categoryRepository.findByCategoryName(updateName).getId());
+		}
 		Set<ProductCategory> list = new HashSet<>();
 		categoryRepository.findAll().forEach(list::add);
 		Long id = !list.isEmpty() ? list.iterator().next().getId() : 0 ;
-		String updateName = "UpdateName";
+		
 		if(id== 0) {
 			fail("no element in the database");
 		}
