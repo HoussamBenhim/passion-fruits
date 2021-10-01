@@ -8,7 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import com.springframework.passionfruits.configForProfileTest;
 import com.springframework.passionfruits.moddels.Product;
 import com.springframework.passionfruits.moddels.ProductCategory;
 import com.springframework.passionfruits.moddels.ProductSubCategory;
@@ -22,16 +21,16 @@ public class DataInitializer implements CommandLineRunner{
 	private final ProductService productService;
 	private final ProductCategoryService productCategoryService;
 	private final ProductSubCategoryService productSubCategoryService;
-	private final configForProfileTest configTest;
+
 	
 	@Autowired
 	public DataInitializer(ProductService productService, ProductCategoryService productCategoryService,
-			ProductSubCategoryService productSubCategoryService, configForProfileTest configTest) {
+			ProductSubCategoryService productSubCategoryService) {
 		
 		this.productService = productService;
 		this.productCategoryService = productCategoryService;
 		this.productSubCategoryService = productSubCategoryService;
-		this.configTest=configTest;
+
 	}
 
 
@@ -105,13 +104,7 @@ public class DataInitializer implements CommandLineRunner{
 		product2.setValeur_nutritionnelle(50);
 		productService.save(product2);
 		
-		
-		System.out.println("---------------------Products Loaded----------------------- ");
-		
-		System.out.println(configTest.getUsername());
-		System.out.println(configTest.getPassword());
-		System.out.println(configTest.getJdbcurl());
-		
+	
 
 		
 	}

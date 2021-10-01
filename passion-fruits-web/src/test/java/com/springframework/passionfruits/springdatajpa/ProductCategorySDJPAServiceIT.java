@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.springframework.passionfruits.configForProfileTest;
 import com.springframework.passionfruits.moddels.ProductCategory;
 import com.springframework.passionfruits.repositories.ProductCategoryRepository;
 import com.springframework.passionfruits.repositories.ProductRepository;
@@ -37,8 +36,6 @@ class ProductCategorySDJPAServiceIT {
 	
 	
 	ProductSubCategorySDJPAService productSubCategoryService;
-	@InjectMocks
-	configForProfileTest configTest;
 
 	
 
