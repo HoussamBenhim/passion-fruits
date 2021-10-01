@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.springframework.passion-fruits
+web: java $JAVA_OPTS -cp target/classes:target/dependency/passion-fruits-web-0.0.2-SNAPSHOT.jar com.springframework.passion-fruits
