@@ -13,7 +13,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.springframework.passionfruits.map.ProductCategoryMapService;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,21 +27,21 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "product_sub_category")
-public class ProductSubCategory extends BaseEntity{
+public class ProductSubCategory extends BaseEntity {
 	@Column(name = "sub_category_name")
 	private String subCtergoryName;
 	@Column(name = "description")
 	private String subCategoryDescription;
-	
+
 	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "product_category_id")
 	private ProductCategory productCategory;
-	
+
 	@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "productSubCategory")
 	private Set<Product> products = new HashSet<>();
-	
+
 	@Builder
 	public ProductSubCategory(Long id, String subCtergoryName, String subCategoryDescription,
 			ProductCategory productCategory, Set<Product> products) {
@@ -52,6 +51,5 @@ public class ProductSubCategory extends BaseEntity{
 		this.productCategory = productCategory;
 		this.products = products;
 	}
-	
-	
+
 }

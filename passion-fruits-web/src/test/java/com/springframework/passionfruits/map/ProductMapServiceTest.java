@@ -6,12 +6,10 @@ import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 import com.springframework.passionfruits.moddels.Product;
 import com.springframework.passionfruits.moddels.ProductCategory;
 import com.springframework.passionfruits.moddels.ProductSubCategory;
-
 
 class ProductMapServiceTest {
 
@@ -19,14 +17,15 @@ class ProductMapServiceTest {
 	ProductSubCategoryMapService productSubCategoryMapService;
 	ProductCategoryMapService productCategoryMapService;
 	Long productId = 1L;
-	String name= "pomme";
+	String name = "pomme";
 	ProductSubCategory productSubCat;
 	ProductCategory productCat;
 	Product product;
+
 	@BeforeEach
 	void setUp() throws Exception {
 		productSubCategoryMapService = new ProductSubCategoryMapService();
-		productCategoryMapService= new ProductCategoryMapService();
+		productCategoryMapService = new ProductCategoryMapService();
 		productCat = ProductCategory.builder().categoryName("Fruits").build();
 		productSubCat = ProductSubCategory.builder().subCtergoryName("fruits rouges").build();
 		productSubCategoryMapService.save(productSubCat);
@@ -35,13 +34,12 @@ class ProductMapServiceTest {
 		System.out.println(productCategoryMapService.findByName("Fruits"));
 		product = Product.builder().id(productId).name(name).productSubCategory(productSubCat).build();
 		productMapService.save(product);
-	
-	}
 
+	}
 
 	@Test
 	void testFindAll() {
-		Set<Product> products= productMapService.findAll();
+		Set<Product> products = productMapService.findAll();
 		assertEquals(1, products.size());
 	}
 
@@ -53,20 +51,20 @@ class ProductMapServiceTest {
 
 	@Test
 	void testSaveProductExistingId() {
-		Long id =1L;
-		Product product2= Product.builder().id(id).productSubCategory(productSubCat).build();
+		Long id = 1L;
+		Product product2 = Product.builder().id(id).productSubCategory(productSubCat).build();
 		Product productSaved = productMapService.save(product2);
 		assertEquals(id, productSaved.getId());
 	}
 
 	@Test
 	void testSaveProductNoId() {
-		Product product3= Product.builder().productSubCategory(productSubCat).build();
+		Product product3 = Product.builder().productSubCategory(productSubCat).build();
 		Product productSaved = productMapService.save(product3);
 		assertNotNull(productSaved);
 		assertNotNull(productSaved.getId());
 	}
-	
+
 	@Test
 	void testDeleteProduct() {
 		productMapService.delete(productMapService.findById(productId));
@@ -85,6 +83,7 @@ class ProductMapServiceTest {
 		assertNotNull(product);
 		assertEquals(1, product.getId());
 	}
+
 	@Test
 	void testFindByNameNotFound() {
 		Product product = productMapService.findByName("foo");
@@ -92,4 +91,3 @@ class ProductMapServiceTest {
 	}
 
 }
-	

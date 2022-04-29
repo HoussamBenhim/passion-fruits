@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -27,12 +26,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "product")
-public class Product extends BaseEntity{
-	
+public class Product extends BaseEntity {
+
 	@Builder
 	public Product(Long id, String name, Double price, String origin, String descrption, Integer valeur_nutritionnelle,
-			String conservation, String culture, String image_url,
-			ProductSubCategory productSubCategory) {
+			String conservation, String culture, String image_url, ProductSubCategory productSubCategory) {
 		super(id);
 		this.name = name;
 		this.price = price;
@@ -44,8 +42,9 @@ public class Product extends BaseEntity{
 		this.image_url = image_url;
 		this.productSubCategory = productSubCategory;
 	}
+
 	@Column(name = "name")
-	private String name; 
+	private String name;
 	@Column(name = "price")
 	private Double price;
 	@Column(name = "origin")
@@ -60,14 +59,14 @@ public class Product extends BaseEntity{
 	private String culture;
 	@Column(name = "picture")
 	private String image_url;
-//	@ManyToOne
-//	@JoinColumn(name = "product_category_id")
-//	private ProductCategory productCategory;
+	// @ManyToOne
+	// @JoinColumn(name = "product_category_id")
+	// private ProductCategory productCategory;
 	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "product_sub_cat_id")
 	private ProductSubCategory productSubCategory;
 	@JsonManagedReference
-	@OneToMany(cascade = CascadeType.ALL,  mappedBy = "product")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
 	private Set<ProductDescription> poductDescriptionList = new HashSet();
 }

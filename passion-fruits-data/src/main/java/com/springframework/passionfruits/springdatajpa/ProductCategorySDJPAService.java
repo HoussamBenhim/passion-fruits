@@ -1,24 +1,16 @@
 package com.springframework.passionfruits.springdatajpa;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
-import org.hibernate.tool.schema.ast.SqlScriptParserException;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import com.springframework.passionfruits.Exceptions.ItemNotFoundException;
 import com.springframework.passionfruits.moddels.ProductCategory;
-import com.springframework.passionfruits.moddels.ProductSubCategory;
 import com.springframework.passionfruits.repositories.ProductCategoryRepository;
 import com.springframework.passionfruits.services.ProductCategoryService;
-
-import javassist.NotFoundException;
-import net.bytebuddy.implementation.bytecode.Throw;
 
 @Service
 @Profile("springdatajpa")
@@ -70,7 +62,8 @@ public class ProductCategorySDJPAService implements ProductCategoryService {
 
 	@Override
 	public ProductCategory patchCatregory(Long id, ProductCategory category) {
-		ProductCategory savedCategory = productCategoryRepository.findById(id).orElseThrow(()-> new ItemNotFoundException("Category with id : " + id + "not found") );
+		ProductCategory savedCategory = productCategoryRepository.findById(id)
+				.orElseThrow(() -> new ItemNotFoundException("Category with id : " + id + "not found"));
 		try {
 			Method[] methods = category.getClass().getDeclaredMethods();
 			for (Method method : methods) {

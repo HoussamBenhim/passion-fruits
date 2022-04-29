@@ -1,6 +1,5 @@
 package com.springframework.passionfruits.springdatajpa;
 
-import static org.hamcrest.CoreMatchers.any;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -15,7 +14,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.hamcrest.Matchers;
 import org.mockito.junit.jupiter.MockitoExtension;
 import com.springframework.passionfruits.moddels.ProductSubCategory;
 import com.springframework.passionfruits.repositories.ProductSubCategoryRepository;
@@ -23,19 +21,19 @@ import com.springframework.passionfruits.repositories.ProductSubCategoryReposito
 @ExtendWith(MockitoExtension.class)
 class ProductSubCategorySDJPAServiceTest {
 	Long id = 1L;
-	String subCatName= "fruits rouges";
+	String subCatName = "fruits rouges";
 	ProductSubCategory returnedSubCat;
-	Set<ProductSubCategory> productSubCats; 
+	Set<ProductSubCategory> productSubCats;
 	@Mock
 	ProductSubCategoryRepository productSubCategoryRepository;
 	@InjectMocks
 	ProductSubCategorySDJPAService productSubCategorySDJPAService;
+
 	@BeforeEach
 	void setUp() throws Exception {
-		returnedSubCat = ProductSubCategory.builder().id(id).subCtergoryName(subCatName).subCategoryDescription("rien").build(); 
+		returnedSubCat = ProductSubCategory.builder().id(id).subCtergoryName(subCatName).subCategoryDescription("rien")
+				.build();
 	}
-
-	
 
 	@Test
 	void testFindAll() {
@@ -43,7 +41,7 @@ class ProductSubCategorySDJPAServiceTest {
 		productSubCats.add(new ProductSubCategory());
 		productSubCats.add(new ProductSubCategory());
 		when(productSubCategoryRepository.findAll()).thenReturn(productSubCats);
-		Set<ProductSubCategory> returnedSet= productSubCategorySDJPAService.findAll();
+		Set<ProductSubCategory> returnedSet = productSubCategorySDJPAService.findAll();
 		assertNotNull(returnedSet);
 		assertEquals(2, returnedSet.size());
 	}
@@ -67,20 +65,21 @@ class ProductSubCategorySDJPAServiceTest {
 	@Test
 	void testDelete() {
 		productSubCategorySDJPAService.delete(returnedSubCat);
-		verify(productSubCategoryRepository,times(1)).delete(returnedSubCat);
+		verify(productSubCategoryRepository, times(1)).delete(returnedSubCat);
 	}
 
 	@Test
 	void testDeleteById() {
 		productSubCategorySDJPAService.deleteById(id);
-		verify(productSubCategoryRepository,times(1)).deleteById(org.mockito.Matchers.anyLong());
+		verify(productSubCategoryRepository, times(1)).deleteById(org.mockito.Matchers.anyLong());
 	}
 
 	@Test
 	void testFindByName() {
-		when(productSubCategoryRepository.findBySubCtergoryName(org.mockito.Matchers.anyString())).thenReturn(returnedSubCat);
+		when(productSubCategoryRepository.findBySubCtergoryName(org.mockito.Matchers.anyString()))
+				.thenReturn(returnedSubCat);
 		ProductSubCategory subCat = productSubCategorySDJPAService.findByName(subCatName);
-		assertEquals(subCatName,subCat.getSubCtergoryName() );
+		assertEquals(subCatName, subCat.getSubCtergoryName());
 	}
 
 }

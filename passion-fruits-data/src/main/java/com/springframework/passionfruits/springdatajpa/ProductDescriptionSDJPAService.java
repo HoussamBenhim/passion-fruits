@@ -10,15 +10,12 @@ import com.springframework.passionfruits.moddels.ProductDescription;
 import com.springframework.passionfruits.repositories.ProductDescriptionRepository;
 import com.springframework.passionfruits.services.ProductDescriptionService;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Profile("springdatajpa")
 @Service
 public class ProductDescriptionSDJPAService implements ProductDescriptionService {
 
 	ProductDescriptionRepository descirptionRepository;
-	
+
 	public ProductDescriptionSDJPAService(ProductDescriptionRepository descirptionRepository) {
 		super();
 		this.descirptionRepository = descirptionRepository;
@@ -33,36 +30,30 @@ public class ProductDescriptionSDJPAService implements ProductDescriptionService
 
 	@Override
 	public ProductDescription findById(Long id) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public ProductDescription save(ProductDescription entity) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	@Override
 	public void delete(ProductDescription entity) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public ProductDescriptionService findByDescription(String description) {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
-
-	
-
-
 
 }
