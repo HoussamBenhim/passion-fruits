@@ -29,7 +29,7 @@ public class FruitsController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<?> findFruitById(@PathVariable String id) {
-		Product product = productService.findById(Long.valueOf(id));
+		Product product=	productService.findById(Long.valueOf(id));
 		if (product == null) {
 			throw new NotFoundException("Fruit introuvable");
 		}

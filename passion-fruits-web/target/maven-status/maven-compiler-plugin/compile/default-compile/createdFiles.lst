@@ -1,0 +1,8 @@
+com\springframework\passionfruits\PassionFruitsApplication.class
+com\springframework\passionfruits\exceptions\NotFoundException.class
+com\springframework\passionfruits\controllers\ProductCategoryController.class
+com\springframework\passionfruits\exceptions\RestResponseEntityExceptionHandler.class
+com\springframework\passionfruits\bootstrap\DataInitializer.class
+com\springframework\passionfruits\controllers\FruitsController.class
+com\springframework\passionfruits\controllers\CORSFilter.class
+com\springframework\passionfruits\ConfigurationClass.class
